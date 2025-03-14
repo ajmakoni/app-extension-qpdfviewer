@@ -30,6 +30,14 @@ module.exports = function (api) {
   // quasar compatibility check
   api.compatibleWith('@quasar/app', '^1.0.0 || ^2.0.0')
 
+  if (api.hasVite === true) {
+    api.compatibleWith('@quasar/app-vite', '^4.0.0-alpha.0')
+  }
+  else {
+    // should be "@quasar/app-webpack" but that is not backward compatible
+    api.compatibleWith('@quasar/app', '^4.0.0')
+  }
+
   // register JSON api
   api.registerDescribeApi('QPdfviewer', './component/QPdfviewer.json')
 
